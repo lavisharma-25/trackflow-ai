@@ -1,0 +1,24 @@
+{
+  "trackers": [
+    {
+      "key": "watchlist",
+      "name": "Watchlist Tracker",
+      "implemented": true
+    },
+    {
+      "key": "games",
+      "name": "Games Tracker",
+      "implemented": false
+    },
+    {
+      "key": "finance",
+      "name": "Finance Tracker",
+      "implemented": false
+    },
+    {
+      "key": "project",
+      "name": "Project Tracker",
+      "implemented": false
+    }
+  ]
+}
