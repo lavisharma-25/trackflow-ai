@@ -1,0 +1,11 @@
+from enum import Enum
+
+
+class Intent(str, Enum):
+    CREATE_TRACKER = "CREATE_TRACKER"
+    LIST_TRACKERS = "LIST_TRACKERS"
+    ADD_DATA = "ADD_DATA"
+    UPDATE_DATA = "UPDATE_DATA"
+    DELETE_DATA = "DELETE_DATA"
+    FETCH_DATA = "FETCH_DATA"
+    OTHER = "OTHER"

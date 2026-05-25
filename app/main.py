@@ -22,3 +22,11 @@ app.include_router(health_router, prefix="/api/v1", tags=["Health Check"])
 app.include_router(trackers_router, prefix="/api/v1", tags=["Trackers"])
 app.include_router(assistant_router, prefix="/api/v1", tags=["Assistant"])
 app.include_router(watchlist_router, prefix="/api/v1", tags=["Watchlist"])
+
+
+from fastapi import FastAPI
+from app.api.routes.assistant import router
+
+app = FastAPI(title="TrackFlow AI")
+
+app.include_router(router)
