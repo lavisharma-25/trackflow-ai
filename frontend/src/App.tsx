@@ -458,7 +458,11 @@ function AssistantPanel({ open, onClose, onDataChanged }: { open: boolean; onClo
   const [conversationId, setConversationId] = useState<string>();
   const [sending, setSending] = useState(false);
   const endRef = useRef<HTMLDivElement>(null);
-  useEffect(() => endRef.current?.scrollIntoView({ behavior: "smooth" }), [messages, open]);
+  useEffect(() => {
+    // Keep the callback return value undefined; newer Chromium builds may return
+    // a value from scrollIntoView that React mistakes for an effect cleanup.
+    endRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, open]);
 
   async function send(event: React.FormEvent) {
     event.preventDefault(); const text = input.trim(); if (!text || sending) return;
