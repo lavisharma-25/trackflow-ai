@@ -3,7 +3,7 @@
 .vscode/
 __pycache__/
 backend/model_credentials/
-backend/src/storage/
+backend/storage/
 .pytest_cache/
 pytest-cache-files-*/
 frontend/node_modules/

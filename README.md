@@ -9,14 +9,21 @@ anything else, then capture and retrieve information manually or through Gemini.
 ```text
 trackflow-ai/
 ├── backend/                 FastAPI, SQLAlchemy, SQLite, Gemini, tests
+│   ├── ai/                  Agent, prompts, and safe tools
+│   ├── api/                 HTTP router and route handlers
+│   ├── core/                Settings and shared exceptions
+│   ├── db/                  Database setup and persistence models
+│   ├── domain/              Business rules, schemas, and services
+│   ├── storage/             Local SQLite data (ignored by Git)
 │   ├── main.py
-│   ├── pyproject.toml
-│   ├── src/
 │   └── tests/
 ├── frontend/                React, TypeScript, Vite
-│   ├── src/
-│   ├── package.json
-│   └── vite.config.ts
+│   ├── app/                 Application shell and routes
+│   ├── features/            Collections, items, and assistant modules
+│   ├── shared/              Reusable UI, hooks, icons, types, and API client
+│   ├── styles/
+│   ├── main.tsx
+│   └── package.json
 └── README.md
 ```
 
@@ -140,7 +147,7 @@ safety, audit events, archive confirmation, and browser CORS.
 
 ## Storage
 
-The active SQLite database is `backend/src/storage/trackflow.db`. It is the application's
+The active SQLite database is `backend/storage/trackflow.db`. It is the application's
 single source of truth and is ignored by Git.
 
 ## Current scope

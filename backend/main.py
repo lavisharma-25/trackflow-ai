@@ -4,16 +4,15 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-from src.api.assistant import router as assistant_router
-from src.api.router import router as api_router
-from src.core.settings import settings
-from src.db.database import init_db
-from src.services.exceptions import (
+from ai.agent import LLMConfigurationError
+from api.router import router as api_router
+from core.exceptions import (
     ConflictError,
     DomainValidationError,
     NotFoundError,
 )
-from src.services.llm_service import LLMConfigurationError
+from core.settings import settings
+from db.database import init_db
 
 
 @asynccontextmanager
@@ -63,8 +62,7 @@ def health_check():
     return {"status": "ok", "app": settings.APP_NAME, "environment": settings.APP_ENV}
 
 
-app.include_router(api_router, tags=["collections"])
-app.include_router(assistant_router, tags=["assistant"])
+app.include_router(api_router)
 
 
 if __name__ == "__main__":
