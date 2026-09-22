@@ -135,15 +135,13 @@ cd frontend
 npm.cmd run build
 ```
 
-The current suite contains seven backend tests covering validation, search, schema
-safety, audit events, archive confirmation, browser CORS, and legacy filesystem protection.
+The current suite contains five backend tests covering validation, search, schema
+safety, audit events, archive confirmation, and browser CORS.
 
-## Storage and old data
+## Storage
 
-The active SQLite database is `backend/src/storage/trackflow.db`. Existing Excel files
-were preserved under `backend/src/storage/trackers/`, but they are not the new source
-of truth. A dedicated one-time importer should be added before those old spreadsheets
-contain important production data.
+The active SQLite database is `backend/src/storage/trackflow.db`. It is the application's
+single source of truth and is ignored by Git.
 
 ## Current scope
 

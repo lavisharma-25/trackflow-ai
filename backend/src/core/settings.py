@@ -28,26 +28,15 @@ class Settings(BaseSettings):
     APP_NAME: str = "TrackFlow AI"
     APP_ENV: str = "development"
     DEBUG: bool = False
-    LOG_LEVEL: str = "INFO"
 
     STORAGE_DIR: Path = BASE_DIR / "src" / "storage"
-    LOGS_DIR: Path = BASE_DIR / "LOGS"
     DATABASE_URL: str = f"sqlite:///{(BASE_DIR / 'src' / 'storage' / 'trackflow.db').as_posix()}"
     FRONTEND_ORIGINS: str = "http://localhost:5173,http://127.0.0.1:5173"
 
-    # Kept for importing the original spreadsheet prototype safely.
-    TRACKERS_DIR: Path = STORAGE_DIR / "trackers"
-    REGISTRY_FILE: Path = STORAGE_DIR / "tracker_registry.json"
-    SCHEMA_FILE: Path = STORAGE_DIR / "schema_registry.json"
-
     GEMINI_MODEL_FLASH: str = "gemini-2.5-flash"
-    GEMINI_MODEL_LITE: str = "gemini-2.5-flash-lite"
     GOOGLE_CLOUD_PROJECT: Optional[str] = None
     LOCATION: str = "global"
     SERVICE_ACCOUNT_PATH: Optional[Path] = _default_service_account_path()
-
-    TMDB_API_KEY: Optional[str] = None
-    TMDB_BASE_URL: str = "https://api.themoviedb.org/3"
 
     @field_validator("DEBUG", mode="before")
     @classmethod
@@ -64,8 +53,6 @@ class Settings(BaseSettings):
 
     def ensure_dirs(self) -> None:
         self.STORAGE_DIR.mkdir(parents=True, exist_ok=True)
-        self.TRACKERS_DIR.mkdir(parents=True, exist_ok=True)
-        self.LOGS_DIR.mkdir(parents=True, exist_ok=True)
 
     def google_credentials(self):
         """Load Vertex credentials lazily, only when the assistant is used."""
