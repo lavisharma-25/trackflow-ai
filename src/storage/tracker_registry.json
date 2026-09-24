@@ -1,9 +1,0 @@
-{
-  "expenses": {
-    "columns": [
-      "amount",
-      "category",
-      "date"
-    ]
-  }
-}

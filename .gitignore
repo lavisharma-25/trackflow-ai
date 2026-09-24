@@ -1,5 +1,11 @@
 .env
+.venv/
 .vscode/
 __pycache__/
-model_credentials/
-LOGS/
+backend/model_credentials/
+backend/storage/
+.pytest_cache/
+pytest-cache-files-*/
+frontend/node_modules/
+frontend/dist/
+frontend/*.tsbuildinfo
