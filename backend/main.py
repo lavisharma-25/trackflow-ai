@@ -23,7 +23,7 @@ async def lifespan(_: FastAPI):
 
 app = FastAPI(
     title=settings.APP_NAME,
-    version="0.2.0",
+    version="1.0.0",
     description="AI-first universal tracker and personal second-brain API",
     lifespan=lifespan,
 )
