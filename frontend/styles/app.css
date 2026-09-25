@@ -222,7 +222,16 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 .assistant-panel header strong { color: #3c3942; font-size: 12px; }
 .assistant-panel header span { margin-top: 3px; display: flex; align-items: center; gap: 5px; color: #918e95; font-size: 8px; }
 .assistant-panel header i { width: 5px; height: 5px; background: #58b985; border-radius: 50%; }
+.new-chat-button { padding: 6px 8px; border: 1px solid #e1dfea; cursor: pointer; color: #665f7d; background: #faf9fd; border-radius: 7px; white-space: nowrap; font-size: 8px; font-weight: 650; }
+.new-chat-button:hover:not(:disabled) { border-color: #c8c3df; background: #f5f3fd; }
+.new-chat-button:disabled { cursor: default; opacity: .45; }
+.assistant-config { padding: 10px 14px; display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 8px; background: #fff; border-bottom: 1px solid #efedf3; }
+.assistant-config label { min-width: 0; display: flex; flex-direction: column; gap: 4px; color: #888391; font-size: 7px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.assistant-config select { width: 100%; height: 30px; padding: 0 25px 0 8px; border: 1px solid #dfdce7; outline: 0; color: #514c5c; background: #fbfafd; border-radius: 7px; font: inherit; font-size: 9px; font-weight: 550; letter-spacing: 0; text-overflow: ellipsis; text-transform: none; }
+.assistant-config select:focus { border-color: #aaa2d8; box-shadow: 0 0 0 2px #f0eeff; }
+.assistant-config select:disabled { color: #96919e; background: #f4f3f6; cursor: not-allowed; }
 .chat-context { height: 35px; padding: 0 17px; display: flex; align-items: center; gap: 6px; color: #837e97; background: #faf9fe; border-bottom: 1px solid #efedf3; font-size: 8px; }
+.chat-context.error { color: #96364a; background: #fff4f5; }
 .chat-messages { flex: 1; overflow-y: auto; padding: 18px 16px; display: flex; flex-direction: column; gap: 11px; background: #fdfdfb; }
 .chat-message { max-width: 84%; display: flex; }
 .chat-message > div { padding: 10px 12px; white-space: pre-wrap; border-radius: 12px; font-size: 10px; line-height: 1.55; }
@@ -291,6 +300,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
   .welcome-state > p { font-size: 12px; }
   .welcome-actions { flex-direction: column; width: min(260px, 100%); }
   .assistant-panel { width: 100%; inset: 0; border: 0; border-radius: 0; }
+  .assistant-config { grid-template-columns: 1fr 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
