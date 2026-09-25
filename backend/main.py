@@ -1,5 +1,6 @@
 from contextlib import asynccontextmanager
 
+import uvicorn
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -23,8 +24,8 @@ async def lifespan(_: FastAPI):
 
 app = FastAPI(
     title=settings.APP_NAME,
-    version="1.0.0",
-    description="AI-first universal tracker and personal second-brain API",
+    version=settings.APP_VERSION,
+    description=settings.APP_DESCRIPTION,
     lifespan=lifespan,
 )
 
@@ -57,15 +58,8 @@ async def llm_configuration_handler(_: Request, exc: LLMConfigurationError):
     return JSONResponse(status_code=503, content={"detail": str(exc)})
 
 
-@app.get("/health", tags=["system"])
-def health_check():
-    return {"status": "ok", "app": settings.APP_NAME, "environment": settings.APP_ENV}
-
-
 app.include_router(api_router)
 
 
 if __name__ == "__main__":
-    import uvicorn
-
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+    uvicorn.run("main:app", host=settings.APP_HOST, port=settings.APP_PORT, reload=False)

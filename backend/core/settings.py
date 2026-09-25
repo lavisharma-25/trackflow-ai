@@ -25,7 +25,11 @@ class Settings(BaseSettings):
     )
 
     APP_NAME: str = "TrackFlow AI"
+    APP_VERSION: str = "1.0.0"
+    APP_DESCRIPTION: str = "AI-first universal tracker and personal second-brain API"
     APP_ENV: str = "development"
+    APP_PORT: int = 8000
+    APP_HOST: str = "127.0.0.1"
     DEBUG: bool = False
 
     STORAGE_DIR: Path = BASE_DIR / "storage"
