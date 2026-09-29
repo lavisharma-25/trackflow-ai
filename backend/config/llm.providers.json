@@ -1,0 +1,46 @@
+{
+    "default_provider": "openrouter",
+    "providers": {
+        "google": {
+            "display_name": "Google Gemini",
+            "model": "GOOGLE_MODEL",
+            "api_key": "GOOGLE_API_KEY"
+        },
+        "openai": {
+            "display_name": "OpenAI",
+            "model": "OPENAI_MODEL",
+            "api_key": "OPENAI_API_KEY",
+            "base_url": "OPENAI_BASE_URL"
+        },
+        "openrouter": {
+            "display_name": "OpenRouter",
+            "model": "OPENROUTER_MODEL",
+            "api_key": "OPENROUTER_API_KEY",
+            "base_url": "OPENROUTER_BASE_URL"
+        },
+        "ollama": {
+            "display_name": "Ollama",
+            "model": "OLLAMA_MODEL",
+            "api_key": "OLLAMA_API_KEY",
+            "base_url": "OLLAMA_BASE_URL"
+        },
+        "groq": {
+            "display_name": "Groq",
+            "model": "GROQ_MODEL",
+            "api_key": "GROQ_API_KEY",
+            "base_url": "GROQ_BASE_URL"
+        },
+        "codecraft": {
+            "display_name": "CodeCraft",
+            "model": "CODECRAFT_MODEL",
+            "api_key": "CODECRAFT_API_KEY",
+            "base_url": "CODECRAFT_BASE_URL"
+        },
+        "nvidia": {
+            "display_name": "NVIDIA",
+            "model": "NVIDIA_MODEL",
+            "api_key": "NVIDIA_API_KEY",
+            "base_url": "NVIDIA_BASE_URL"
+        }
+    }
+}
