@@ -43,58 +43,12 @@ def load_llm_config(config_path: Path) -> dict:
     return config
 
 
-def get_provider(provider_name: str | None = None) -> dict:
-    configuration = load_llm_config()
-    providers = configuration.get("providers", {})
-    provider = (provider_name or configuration.get("default_provider"))
-    llm_config = providers.get(provider)
-    print(f"Selected provider: {provider}\nConfiguration: {llm_config}")
+def get_provider(provider_name: str | None = None, config_path: Path | None = None) -> dict:
+    config = load_llm_config(config_path)
+    provider = provider_name or config["default_provider"]
+    # print(f"Selected provider: {provider}")
 
-    if provider is None:
-        raise LLMConfigurationError(f"Unknown LLM provider: {provider_name}")
+    llm_config = config["providers"][provider]
+    # print(f"Available providers: {llm_config}")
 
-    return llm_config
-
-
-def list_providers() -> list[dict]:
-    config = load_llm_config()
-    providers = config.get("provider", {})
-
-    result = []
-
-    for provider_id, provider in providers.items():
-        model = os.getenv(provider["model"])
-        api_key = os.getenv(provider["api_key"])
-        base_url = (
-            os.getenv(provider["base_url"])
-            if provider.get("base_url")
-            else None
-        )
-
-        available = bool(
-            model
-            and api_key
-            and (
-                not provider.get("base_url")
-                or base_url
-            )
-        )
-
-        result.append(
-            {
-                "id": provider_id,
-                "display_name": provider["display_name"],
-                "model": model,
-                "available": available,
-            }
-        )
-
-    return result
-
-if __name__ == "__main__":
-
-    print(load_llm_config())
-
-    get_provider("openrouter")
-
-    print(list_providers())
+    return {"provider": provider, "config": llm_config}
