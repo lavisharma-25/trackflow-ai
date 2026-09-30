@@ -8,9 +8,6 @@ from ai.llm_config import get_provider
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 
-# print(f"BASE_DIR: {BASE_DIR}")
-
-
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=BASE_DIR / ".env",
@@ -34,11 +31,8 @@ class Settings(BaseSettings):
     # ==========================================================================
     # Gemini
     # ==========================================================================
-    # GOOGLE_MODEL: str = "gemini-2.5-flash"
-    # GOOGLE_API_KEY: str | None = None
-    # GOOGLE_CLOUD_PROJECT: str
-    # GOOGLE_CLOUD_LOCATION: str = "global"
-    # GOOGLE_APPLICATION_CREDENTIALS: str
+    GOOGLE_MODEL: str | None = None
+    GOOGLE_API_KEY: str | None = None
 
     # ==========================================================================
     # OPENAI
@@ -50,13 +44,14 @@ class Settings(BaseSettings):
     # ==========================================================================
     # OpenRouter
     # ==========================================================================
-    OPENROUTER_MODEL: str = "google/gemma-4-26b-a4b-it:free"
-    OPENROUTER_API_KEY: str
+    OPENROUTER_MODEL: str | None = None
+    OPENROUTER_API_KEY: str | None = None
+    OPENROUTER_BASE_URL: str | None = None
     
     # ==========================================================================
     # OpenCode
     # ==========================================================================
-    OPENCODE_MODEL: str = "deepseek-v4-flash-free"
+    OPENCODE_MODEL: str | None = None
     OPENCODE_API_KEY: str | None = None
     OPENCODE_BASE_URL: str | None = None
 
@@ -124,8 +119,6 @@ class Settings(BaseSettings):
 def get_settings() -> Settings:
     settings = Settings()
     settings.create_directories()
-    config = settings.get_llm_config()
-    print(f"LLM provider config: {config}")
     return settings
 
 
